@@ -1,0 +1,11 @@
+{
+  "name": "fcc-url-shortener-microservice",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "repository": "",
+  "author": "Jeff Wakeman <deftwun@gmail.com>",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
