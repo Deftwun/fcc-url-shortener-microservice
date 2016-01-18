@@ -6,6 +6,7 @@
   "repository": "",
   "author": "Jeff Wakeman <deftwun@gmail.com>",
   "dependencies": {
-    "express": "^4.13.3"
+    "express": "^4.13.3",
+    "mongodb": "^2.1.4"
   }
 }

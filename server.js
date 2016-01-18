@@ -3,6 +3,8 @@ var app = express();
 
 var port = process.env.PORT || 8080;
 
+var mongo = require('mongodb').MongoClient;
+
 app.use("/",express.static("client"));
 
 app.get("/new/:url",require("./routes/new.js"));
