@@ -5,7 +5,7 @@ var port = process.env.PORT || 8080;
 
 var mongo = require('mongodb').MongoClient;
 
-mongo.connect('mongodb://localhost:27017/clementinejs', function (err, db) {
+mongo.connect('mongodb://localhost:27017/shortUrl', function (err, db) {
   
   if (err) {
       throw new Error('Database failed to connect!');
