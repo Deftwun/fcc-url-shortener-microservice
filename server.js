@@ -9,9 +9,9 @@ var mongo = require('mongodb').MongoClient;
 mongo.connect('mongodb://localhost:27017/shortUrl', function (err, db) {
   
   if (err) {
-      throw new Error('Database failed to connect!');
+    throw new Error('Database failed to connect!');
   } else {
-      console.log('MongoDB successfully connected on port 27017.');
+    console.log('MongoDB successfully connected on port 27017.');
   }
   
   var routes = require("./app/routes.js");
