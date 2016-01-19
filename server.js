@@ -1,5 +1,6 @@
 var express = require("express");
 var app = express();
+"use strict";
 
 var port = process.env.PORT || 8080;
 
