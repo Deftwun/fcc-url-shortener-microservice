@@ -12,10 +12,9 @@ mongo.connect('mongodb://localhost:27017/shortUrl', function (err, db) {
   } else {
       console.log('MongoDB successfully connected on port 27017.');
   }
-    
-  app.use("/",express.static("client"));
-  app.get("/new/:url",require("./routes/new.js"));
-  app.get("/:url",require("./routes/resolve.js"));
+  
+  var routes = require("./app/routes.js");
+  routes(app,db);  
   
   app.listen(port, function () {
     console.log('url-shortener running on port ' + port);
