@@ -18,6 +18,12 @@ function uniqueRandomValue(collection,field,callback){
   
 }
 
+//Make sure url is formatted properly
+function validateUrl(url){
+  var isValidDomain = require('is-valid-domain');
+  return isValidDomain(url); 
+}
+
 //Controller API Object
 function controller (db) {
   
@@ -25,10 +31,16 @@ function controller (db) {
   
   //Create new shortened url
   this.createNew = function(req,res){
+    
+    if (!validateUrl(req.params.url)){
+      res.end("Error: Not a valid URL");
+      return;
+    }
+    
     uniqueRandomValue(collection,"short",function(shortName){
       collection.insert({"short":shortName,"long":req.params.url},function(err,result){
         if (err) throw err;
-        res.json(shortName);
+        res.end("Your shortened URL is:\n" + req.headers.host + "/" + shortName);
       });
     });
   };
@@ -39,10 +51,10 @@ function controller (db) {
       if (err) {throw err;}
   
       if (result){
-        res.end(result.long);
+        res.end(req.headers.host + "/" + result.short + " resolves to:\n" + result.long);
       }
       else {
-        res.end("That URL does not exist");
+        res.end("That shortened URL does not exist");
       }
     });
   };
