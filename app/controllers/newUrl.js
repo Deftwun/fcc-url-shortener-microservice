@@ -1,3 +1,3 @@
-module.exports = function(urlString){
+module.exports = function(urlString,db){
     return "shortenedUrlHere";
 }

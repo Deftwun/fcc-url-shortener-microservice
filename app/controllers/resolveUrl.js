@@ -1,3 +1,3 @@
-module.exports = function(shortenedName){
+module.exports = function(shortenedName,db){
     return "resolvedUrlHere";
 }
