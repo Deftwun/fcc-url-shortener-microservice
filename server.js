@@ -13,7 +13,7 @@ process.env.DB_CONNECT_STRING = 'mongodb://localhost:27017/shortUrl';
 mongo.connect(process.env.DB_CONNECT_STRING, function (err, db) {
   
   if (err) {
-    throw new Error('Database failed to connect!');
+    throw new Error('Database failed to connect to ' + process.env.DB_CONNECT_STRING);
   } else {
     console.log('MongoDB successfully connected on port 27017.');
   }
