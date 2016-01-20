@@ -6,7 +6,11 @@ var port = process.env.PORT || 8080;
 
 var mongo = require('mongodb').MongoClient;
 
-mongo.connect('mongodb://localhost:27017/shortUrl', function (err, db) {
+//This line is for testing purposes only. In a production environment 
+// like heroku this would already be set to your database location.
+process.env.DB_CONNECT_STRING = 'mongodb://localhost:27017/shortUrl';
+
+mongo.connect(process.env.DB_CONNECT_STRING, function (err, db) {
   
   if (err) {
     throw new Error('Database failed to connect!');
