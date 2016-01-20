@@ -4,13 +4,49 @@
   <head>
     <title>fcc-url-shortener</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/css/bootstrap-responsive.min.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/bootstrap-responsive.min.css">
   </head>
   
-  <body>
-    <h1>fcc-url-shortener</h1>
-    <script src="/js/bootstrap.min.js"></script>
+  <body style="margin:15px">
+    
+    <h1 class="page-header">fcc-url-shortener</h1>
+    <p>
+      <a href="http://www.freecodecamp.com/challenges/request-header-parser-microservice">
+        http://www.freecodecamp.com/challenges/request-header-parser-microservice
+      </a>
+    </p>
+    
+    <br>
+    
+    <p><strong>Shorten a URL</strong></p>
+    
+    <p>
+      Input: <code><span class="host-name"></span>/new/google.com</code>
+    </p>
+    
+    <p>
+      Output: <code>{"short_url":"<span class="host-name"></span>/P1qBfRVe,"long_url":"google.com"}</code>
+    </p>
+    
+    <br>
+    
+    <p><strong>Resolve a shortened URL</strong></p>
+    <p>
+      Input: <code><span class="host-name"></span>/P1qBfRVe</code>
+    </p>
+    
+    <p>
+      Output: <code>{"short_url":"P1qBfRVe,"long_url":"google.com"}</code>
+    </p>
+
+    <script>
+      //Use the correct domain/host name in document.
+      var spans = document.querySelectorAll(".host-name");
+      for (var i in spans){
+        spans[i].innerHTML = location.host;
+      }
+    </script>
   </body>
   
 </html>

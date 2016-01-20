@@ -33,25 +33,38 @@ function controller (db) {
   this.createNew = function(req,res){
     
     if (!validateUrl(req.params.url)){
-      res.end("Error: Not a valid URL");
+      res.json({"error":"Not a valid URL"});
       return;
     }
     
     uniqueRandomValue(collection,"short",function(shortName){
-      collection.insert({"short":shortName,"long":req.params.url},function(err,result){
-        if (err) throw err;
-        res.end("Your shortened URL is:\n" + req.headers.host + "/" + shortName);
-      });
+      var s = shortName,
+          l = req.params.url;
+          
+      collection.insert(
+        {"short_url":s,"long_url":l},function(err,result){
+          if (err) throw err;
+
+          var data = {
+            "short_url": req.headers.host + "/" + s,
+            "long_url": l
+          }
+          res.json(data);
+        });
     });
+    
   };
   
   //Resolve a shortened url to full version
   this.resolve = function(req,res){
-    collection.findOne({short:req.params.url},function(err,result){
+    var query = {"short_url":req.params.url},
+        projection = {"_id":0};
+        
+    collection.findOne(query,projection,function(err,result){
       if (err) {throw err;}
   
       if (result){
-        res.end(req.headers.host + "/" + result.short + " resolves to:\n" + result.long);
+        res.json(result);
       }
       else {
         res.end("That shortened URL does not exist");
