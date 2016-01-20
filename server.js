@@ -8,7 +8,7 @@ var mongo = require('mongodb').MongoClient;
 
 //This line is for testing purposes only. In a production environment 
 // like heroku this would already be set to your database location.
-process.env.DB_CONNECT_STRING = 'mongodb://localhost:27017/shortUrl';
+//process.env.DB_CONNECT_STRING = 'mongodb://localhost:27017/shortUrl';
 
 mongo.connect(process.env.DB_CONNECT_STRING, function (err, db) {
   
